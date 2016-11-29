@@ -10,6 +10,8 @@ apt_package 'dbus-x11'
 apt_package 'plymouth'
 
 include_recipe 'kodi'
+include_recipe 'couchpotato'
+include_recipe 'sickrage'
 
 user 'kodi' do
 	home '/opt/kodi'
@@ -52,3 +54,26 @@ end
 service 'kodi' do
   action [ :enable, :start ]
 end
+
+directory '/storage/' do
+	owner 'kodi'
+	group 'kodi'
+	mode '0777'
+end
+
+%w{torrents torrents/downloads torrents/incomplete torrents/torrents tvshows movies music}.each do |dir|
+	directory "/storage/#{dir}" do
+		owner 'kodi'
+		group 'kodi'
+		mode '0777'
+		recursive true
+	end
+end
+
+node.default['transmission']['download_dir'] = '/storage/torrents/downloads'
+node.default['transmission']['incomplete_dir'] = '/storage/torrents/incomplete'
+node.default['transmission']['incomplete_dir_enabled'] = true
+node.default['transmission']['watch_dir'] = '/storage/torrents/torrents'
+node.default['transmission']['watch_dir_enabled'] = true
+
+include_recipe 'transmission'

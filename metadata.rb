@@ -15,3 +15,6 @@ version '0.1.0'
 # source_url 'https://github.com/<insert_org_here>/blackmirror' if respond_to?(:source_url)
 
 depends 'kodi'
+depends 'couchpotato'
+depends 'sickrage'
+depends 'transmission'

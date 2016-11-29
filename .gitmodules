@@ -1,0 +1,3 @@
+[submodule "cookbooks/sickrage"]
+	path = cookbooks/sickrage
+	url = git@github.com:nethunter/sickrage.git
