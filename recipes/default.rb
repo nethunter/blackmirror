@@ -12,14 +12,23 @@ end
 apt_package 'xserver-xorg-legacy'
 apt_package 'xorg'
 apt_package 'dbus-x11'
+apt_package 'plymouth'
 apt_package 'kodi'
 
 user 'kodi' do
-  shell '/bin/false'
+	home '/opt/kodi'
+	system true
+	shell '/bin/false'
 end
 
 group 'kodi' do
   members 'kodi'
+end
+
+directory '/opt/kodi' do
+	owner 'kodi'
+	group 'kodi'
+	mode '0755'
 end
 
 %w{cdrom audio video plugdev users dialout dip input netdev}.each do |g|
