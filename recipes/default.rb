@@ -4,16 +4,12 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-apt_repository 'kodi' do
-  uri          'ppa:team-xbmc/ppa'
-  distribution node['lsb']['codename']
-end
-
 apt_package 'xserver-xorg-legacy'
 apt_package 'xorg'
 apt_package 'dbus-x11'
 apt_package 'plymouth'
-apt_package 'kodi'
+
+include_recipe 'kodi'
 
 user 'kodi' do
 	home '/opt/kodi'
