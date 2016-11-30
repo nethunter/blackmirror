@@ -73,6 +73,7 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
 
   config.vm.provision "chef_solo" do |chef|
+    chef.data_bags_path = "data_bags"
     chef.add_recipe "blackmirror"
   end
 end

@@ -4,3 +4,8 @@ Action=Action=org.freedesktop.upower.*;org.freedesktop.consolekit.system.*;org.f
 ResultActive=yes
 ResultAny=yes
 ResultInactive=no
+
+[Mounting, checking, etc. of internal drives]
+Identity=unix-user:kodi
+Action=org.freedesktop.udisks.filesystem-*;org.freedesktop.udisks.drive-ata-smart*;org.freedesktop.udisks2.filesystem-*;
+ResultActive=yes

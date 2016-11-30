@@ -4,12 +4,9 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-apt_package 'xserver-xorg-legacy'
-apt_package 'xorg'
-apt_package 'dbus-x11'
-apt_package 'plymouth'
-apt_package 'udisks2'
-apt_package 'consolekit'
+%w{xserver-xorg-legacy xorg dbus-x11 plymouth udisks2 consolekit avahi-daemon}.each do |pkg|
+  package pkg
+end
 
 include_recipe 'kodi'
 include_recipe 'couchpotato'
@@ -59,6 +56,15 @@ template '/etc/X11/Xwrapper.config' do
 	group 'root'
 	mode '0644'
 end
+
+template '/etc/security/limits.conf' do
+  source 'security-limits.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+service 'udisks2'
 
 service 'kodi' do
   action [ :enable, :start ]
