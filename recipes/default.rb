@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-%w{xserver-xorg-legacy xorg dbus-x11 plymouth udisks2 consolekit avahi-daemon}.each do |pkg|
+%w{xserver-xorg-legacy xorg dbus-x11 plymouth udisks2 consolekit}.each do |pkg|
   package pkg
 end
 
@@ -62,6 +62,14 @@ template '/etc/security/limits.conf' do
   owner 'root'
   group 'root'
   mode '0644'
+end
+
+template '/etc/udev/rules.d/99-udisks2.rules' do
+  source 'udisks2-rules.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[udisks2]', :immediately
 end
 
 service 'udisks2'
