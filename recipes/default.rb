@@ -70,12 +70,6 @@ directory '/storage/' do
 	mode '0777'
 end
 
-node.default['samba']['workgroup'] = 'DarkNet'
-node.default['samba']['security'] = 'user'
-node.default['samba']['hosts_allow'] = ''
-node.default['samba']['server_string'] = 'BlackMirror Connect'
-node.default['samba']['interfaces'] = ''
-
 include_recipe 'samba::server'
 
 %w{torrents torrents/downloads torrents/incomplete torrents/torrents tvshows movies music}.each do |dir|
@@ -86,12 +80,5 @@ include_recipe 'samba::server'
 		recursive true
 	end
 end
-
-node.default['transmission']['download_dir'] = '/storage/torrents/downloads'
-node.default['transmission']['incomplete_dir'] = '/storage/torrents/incomplete'
-node.default['transmission']['incomplete_dir_enabled'] = true
-node.default['transmission']['watch_dir'] = '/storage/torrents/torrents'
-node.default['transmission']['watch_dir_enabled'] = true
-node.default['transmission']['rpc_password'] = 's6M9XJst8MyRbGZr'
 
 include_recipe 'transmission'

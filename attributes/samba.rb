@@ -1,0 +1,5 @@
+default['samba']['workgroup'] = 'DarkNet'
+default['samba']['security'] = 'user'
+default['samba']['hosts_allow'] = ''
+default['samba']['server_string'] = 'BlackMirror Connect'
+default['samba']['interfaces'] = ''
