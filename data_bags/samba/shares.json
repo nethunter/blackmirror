@@ -1,0 +1,33 @@
+{
+  "id": "shares",
+  "shares": {
+    "TV Shows": {
+      "comment": "TV Shows Share",
+      "path": "/storage/tvshows",
+      "guest ok": "yes",
+      "create mask": "0664",
+      "directory mask": "0775"
+    },
+    "Music": {
+      "comment": "Music Share",
+      "path": "/storage/music",
+      "guest ok": "yes",
+      "create mask": "0664",
+      "directory mask": "0775"
+    },
+    "Torrents": {
+      "comment": "Torrents Share",
+      "path": "/storage/torrents",
+      "guest ok": "yes",
+      "create mask": "0664",
+      "directory mask": "0775"
+    },
+    "Movies": {
+      "comment": "Movies Share",
+      "path": "/storage/movies",
+      "guest ok": "yes",
+      "create mask": "0664",
+      "directory mask": "0775"
+    }
+  }
+}

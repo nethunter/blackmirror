@@ -70,6 +70,14 @@ directory '/storage/' do
 	mode '0777'
 end
 
+node.default['samba']['workgroup'] = 'DarkNet'
+node.default['samba']['security'] = 'user'
+node.default['samba']['hosts_allow'] = ''
+node.default['samba']['server_string'] = 'BlackMirror Connect'
+node.default['samba']['interfaces'] = ''
+
+include_recipe 'samba::server'
+
 %w{torrents torrents/downloads torrents/incomplete torrents/torrents tvshows movies music}.each do |dir|
 	directory "/storage/#{dir}" do
 		owner 'kodi'
